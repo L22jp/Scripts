@@ -1,0 +1,168 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("yFnLK-HUB Prison Life", "BloodTheme")
+
+-- Main --
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Player")
+-- WalkSpeed --
+Section:NewSlider("WalkSpeed", "This function increase your character's speed", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+-- JumpPower --
+Section:NewSlider("JumpPower", "This function increases your character's jump distance", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+-- Guns -- 
+local Section = Tab:NewSection("Guns")
+Section:NewDropdown("Guns", "This function drop item selected", {"M9", "Remington 870", "AK-47", "M4A1"}, function(v)
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1) 
+end)
+-- Items -- 
+local Section = Tab:NewSection("Items")
+Section:NewDropdown("Items", "This function drop item selected", {"Key card", "Hammer", "Crude Knife"}, function(v)
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].single[v].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1) 
+end)
+-- Teleport -- 
+local Section = Tab:NewSection("Teleports")
+-- Criminals Spawn --
+Section:NewButton("Criminals Spawn", "Teleport You to Criminals Spawn", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-920.510803, 92.2271957, 2138.27002, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+end)
+-- Police Spawn -- 
+Section:NewButton("Polices Spawn", "Teleport You to Polices Spawn", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(857.08313, 97.1001282, 2317.84131, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+end)
+-- Esp -- 
+local Section = Tab:NewSection("Esp")
+-- Esp NameTag White -- 
+Section:NewButton("Esp NameTag [White]", "Esp NameTag All players", function()
+local camera = Workspace.CurrentCamera
+    
+for i,v in pairs(game.Teams.Guards()) do
+if v ~= game.Players.LocalPlayer and v ~= nill then
+local vector, onscreen = camera:WorldToViewportPoint(v.Character.Torso.Position)
+local text = Drawing.new("Text")
+text.Visible = true
+text.Font = 1
+text.Center = true
+text.Size = 15
+text.Color = Color3.fromRGB(255,255,255)
+text.Text = v.Name
+text.Position = Vector2.new(vector.X, vector.Y)
+function ESP()
+game:GetService("RunService").RenderStepped:Connect(function()
+if v ~= nill then
+local vector, onscreen = camera:WorldToViewportPoint(v.Character.Torso.Position)
+if onscreen then
+text.Visible = true
+text.Position = Vector2.new(vector.X, vector.Y)
+else
+ text.Visible = false
+ end
+end
+end)
+end
+coroutine.wrap(ESP)()
+end
+end
+    
+game.Players.PlayerAdded:Connect(function()
+    local camera = Workspace.CurrentCamera
+    
+    for i,v in pairs(game.Players:GetPlayers()) do
+    if v ~= game.Players.LocalPlayer and v ~= nill then
+    local vector, onscreen = camera:WorldToViewportPoint(v.Character.Torso.Position)
+    local text = Drawing.new("Text")
+    text.Visible = true
+    text.Font = 1
+    text.Center = true
+    text.Size = 15
+    text.Color = Color3.fromRGB(255,255,255)
+    text.Text = v.Name
+    text.Position = Vector2.new(vector.X, vector.Y)
+    function ESP()
+    game:GetService("RunService").RenderStepped:Connect(function()
+    if v ~= nill then
+    local vector, onscreen = camera:WorldToViewportPoint(v.Character.Torso.Position)
+    if onscreen then
+    text.Visible = true
+    text.Position = Vector2.new(vector.X, vector.Y)
+    else
+    text.Visible = false
+    end
+    end
+    end)
+    end
+    coroutine.wrap(ESP)()
+    end
+    end
+end)
+end)
+-- Esp NameTag Red -- 
+Section:NewButton("Esp NameTag [Red]", "Esp NameTag All players", function()
+local camera = Workspace.CurrentCamera
+        
+for i,v in pairs(game.Players:GetPlayers()) do
+if v ~= game.Players.LocalPlayer and v ~= nill then
+local vector, onscreen = camera:WorldToViewportPoint(v.Character.Torso.Position)
+local text = Drawing.new("Text")
+text.Visible = true
+text.Font = 1
+text.Center = true
+text.Size = 15
+text.Color = Color3.fromRGB(255,0,0)
+text.Text = v.Name
+text.Position = Vector2.new(vector.X, vector.Y)
+function ESP()
+game:GetService("RunService").RenderStepped:Connect(function()
+if v ~= nill then
+local vector, onscreen = camera:WorldToViewportPoint(v.Character.Torso.Position)
+if onscreen then
+text.Visible = true
+text.Position = Vector2.new(vector.X, vector.Y)
+else
+text.Visible = false
+end
+end
+end)
+end
+coroutine.wrap(ESP)()
+end
+end
+        
+game.Players.PlayerAdded:Connect(function()
+    local camera = Workspace.CurrentCamera
+        
+    for i,v in pairs(game.Players:GetPlayers()) do
+    if v ~= game.Players.LocalPlayer and v ~= nill then
+    local vector, onscreen = camera:WorldToViewportPoint(v.Character.Torso.Position)
+    local text = Drawing.new("Text")
+    text.Visible = true
+    text.Font = 1
+    text.Center = true
+    text.Size = 15
+    text.Color = Color3.fromRGB(255,0,0)
+    text.Text = v.Name
+    text.Position = Vector2.new(vector.X, vector.Y)
+    function ESP()
+    game:GetService("RunService").RenderStepped:Connect(function()
+    if v ~= nill then
+    local vector, onscreen = camera:WorldToViewportPoint(v.Character.Torso.Position)
+    if onscreen then
+    text.Visible = true
+    text.Position = Vector2.new(vector.X, vector.Y)
+    else
+    text.Visible = false
+    end
+    end
+    end)
+    end
+    coroutine.wrap(ESP)()
+    end
+    end
+end)
+end)
