@@ -25,6 +25,12 @@ Tab:AddSlider({
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 	end
 })
+Tab:AddButton({
+	Name = "StopWalkSpeed",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+  	end    
+})
 -- JumpPower --
 Tab:AddSlider({
 	Name = "JumpPower",
@@ -33,10 +39,63 @@ Tab:AddSlider({
 	Default = 5,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
-	ValueName = "Velocity",
+	ValueName = "JumpPower",
 	Callback = function(s)
 	game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
 	end
+})
+Tab:AddButton({
+	Name = "StopJumpPower",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+  	end    
+})
+-- Health -- 
+local Section = Tab:AddSection({
+	Name = "Health"
+})
+Tab:AddSlider({
+	Name = "MaxHealth",
+	Min = 0,
+	Max = 500,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "MaxHealth",
+	Callback = function(s)
+	game.Players.LocalPlayer.Character.Humanoid.MaxHealth = s
+	end
+})
+-- Health -- 
+Tab:AddSlider({
+	Name = "Health",
+	Min = 0,
+	Max = 500,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Health",
+	Callback = function(s)
+	game.Players.LocalPlayer.Character.Humanoid.Health = s
+	end
+})
+-- Invisible -- 
+local Section = Tab:AddSection({
+	Name = "Invisible"
+})
+Tab:AddButton({
+	Name = "Invisible Body",
+	Callback = function()
+        local players = game:GetService("Players")
+local localplayer = players.LocalPlayer
+local character = localplayer.Character or localplayer.CharacterAdded:Wait()
+--local player only
+for _, part in ipairs(character:GetDescendants()) do
+	if part:IsA("BasePart") then
+		part.Transparency = 1
+	end
+end
+  	end    
 })
 -- Teleports -- 
 local Tab = Window:MakeTab({
@@ -51,7 +110,13 @@ local Section = Tab:AddSection({
 Tab:AddButton({
 	Name = "Criminals Spawn",
 	Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-920.510803, 92.2271957, 2138.27002, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-975.845398, 109.323769, 2053.74316, -0.00128220627, -3.02773628e-08, -0.999999166, 1.69631598e-08, 1, -3.02991374e-08, 0.999999166, -1.70019963e-08, -0.00128220627)
+  	end    
+})
+Tab:AddButton({
+	Name = "Criminals Garage",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-910.141479, 95.1272888, 2153.69165, -0.99922049, -8.97453987e-08, 0.0394768715, -8.83686084e-08, 1, 3.66207402e-08, -0.0394768715, 3.3103678e-08, -0.99922049)
   	end    
 })
 -- Polices Spawn -- 
@@ -62,6 +127,12 @@ Tab:AddButton({
 	Name = "Polices Spawn",
 	Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(857.08313, 97.1001282, 2317.84131, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+  	end    
+})
+Tab:AddButton({
+	Name = "Polices Garage",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(615.930908, 98.2000046, 2491.87915, -0.99995178, 1.16960095e-08, -0.00982102845, 1.05723892e-08, 1, 1.14461528e-07, 0.00982102845, 1.14352176e-07, -0.99995178)
   	end    
 })
 -- Pull --
